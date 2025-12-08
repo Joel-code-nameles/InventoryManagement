@@ -11,9 +11,50 @@
             --card: #f7fafd;
             --font: #214758;
         }
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        body{
+            background: var(--bg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .card{
+            background: var(--card);
+            width: 400px;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-info input{ 
+            display: flex;
+            flex-direction: column;
+            height: 5vh;
+            width: 300px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="card">
+        <label>Register</label>
+        <div class="card-info">
+            <form method="post">
+                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Username" name="user">
+                <input type="password" placeholder="Password" name="pass">
+                <input type="text" placeholder="Confirm Password" name="confirm_pass">
+            </form>
+        </div>
+        <button>Submit</button>
+    </div>
 </body>
 </html>
