@@ -9,13 +9,16 @@
             --nav: #255267;
             --bg: #c6e3ea;
             --card: #f7fafd;
-            --font: #214758;
+            --font: #2c434d;
+            --border: #acb0b0;
+            --button-bg: #d8ecf6;
         }
 
         *{
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;;
         }
 
         body{
@@ -27,19 +30,51 @@
         .card{
             background: var(--card);
             width: 400px;
-            height: 60vh;
+            height: 70vh;
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
+            margin-left: 35%;
+            margin-top: 7%;
+            border-radius: 7px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .card-info input{ 
             display: flex;
             flex-direction: column;
-            height: 5vh;
+            height: 6vh;
             width: 300px;
             margin-bottom: 10px;
+            border-radius: 5px;
+            border: 2px solid var(--border);
+        }
+
+        .card button{
+            height: 6vh;
+            width: 300px;
+            border-radius: 5px;
+            background: var(--nav);
+            color: var(--button-bg);
+            border: none;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .card label{
+            margin-bottom: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--font);
+        }
+
+        .card-info input::placeholder{
+            padding: 20px;
+        }
+
+        .card p{
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -55,6 +90,7 @@
             </form>
         </div>
         <button>Submit</button>
+        <p>Don't have an account? <a href="login.html">Sign in</a></p>
     </div>
 </body>
 </html>
