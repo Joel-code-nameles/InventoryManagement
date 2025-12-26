@@ -38,10 +38,10 @@ def Login(request):
         password = request.POST['password']
 
         try:
-            useraccount = Registration.objects.get(email = email)
+            userAccount = Registration.objects.get(email = email)
 
-            if check_password(password, useraccount.password):
-                messages.success(request, f"Let Get Managing {useraccount.username}")
+            if check_password(password, userAccount.password):
+                messages.success(request, f"Let Get Managing {userAccount.username}")
                 return render(request, "pages/login.html")
 
             else:
