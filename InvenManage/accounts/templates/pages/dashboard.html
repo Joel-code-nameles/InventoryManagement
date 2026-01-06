@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        :root{
+            --nav: #255267;
+            --bg: #c6e3ea;
+            --card: #f7fafd;
+            --font: #2c434d;
+            --border: #acb0b0;
+            --button-bg: #d8ecf6;
+        }
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body{
+            background: var(--bg);
+            display: flex;
+
+        }
+
+        main{
+            width: 85%;
+            height: 100%;
+        }
+
+        .nav{
+            display: flex;
+            flex-direction: column;
+            background: var(--nav);
+            height: 100vh;
+            width: 15%;
+            padding: 20px;
+            align-items: center;
+        }
+
+        .nav h1{
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .circle{
+            border: 2px solid var(--card);
+            height: 10vh;
+            width: 60px;
+            padding: 20px;
+            border-radius: 30px;
+        }
+
+        .user{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 5%;
+        }
+
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .info h1{
+            font-size: 15px;
+            color: #FFF;
+            font-weight: 600;
+        }
+
+        .info span{
+            font-size: 12;
+            color: #FFF;
+            font-weight: 600;
+        }
+
+        .sideNav a{
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .sideNav{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+
+
+        .outline{
+            background: var(--bg);
+            color: #2c434d;
+            border-radius: 30px 0 0 30px;
+            padding: 10px;
+            width: 220px;
+            padding-left: 60px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .nav2{
+            width: 100%;
+            background: #fff;
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: center;
+            
+        }
+
+        .nav2 label{
+            font-size: 25px;
+            font-weight: 600;
+            color: var(--font);
+        }
+
+        .nav2 input{
+            width: 270px;
+            height: 5vh;
+            border-radius: 20px;
+            border: 2px solid var(--font);
+        }
+
+        .nav2 input::placeholder{
+            padding: 20px;
+        }
+
+        .over-view{
+            display: flex;
+            width: 90%;
+            background: #fff;
+            margin-top: 20px;
+            margin-left: 5%;
+            flex-direction: column;
+            height: 25vh;
+            border-radius: 7px;
+        }
+
+        main{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .over-content{
+            display: flex;
+            flex-direction: row;
+            margin-left: 10%;
+            margin-top: 10px;
+        }
+
+        .card{
+            border: 2px solid lightgreen;
+            padding: 20px;
+            background: rgba(144, 238, 144, 0.048);
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 7px;
+            width: 200px;
+        }
+
+        .card2{
+            padding: 20px;
+            border: 2px solid rgb(201, 135, 12);
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(201, 135, 12, 0.041);
+            border-radius: 7px;
+            width: 200px;
+        }
+
+        .over-view label{
+            margin-left: 20px;
+            font-size: 20px;
+            color: var(--font);
+            font-weight: 600;
+        }
+
+        .main2{
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+            margin-left: 3%;
+        }
+
+        .c1{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            background: #FFF;
+            height: 180px;
+            width: 200px;
+            border-radius: 7px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .c1 label{
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .c1 .span1{
+            font-size: 25px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .c1 .span2{
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .c2{
+            height: 180px;
+            background: #FFF;
+            margin-left: 20px;
+            border-radius: 7px;
+            width: 600px;
+            padding: 20px;
+        }
+
+        .c2 label{
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .c3{
+            height: 350px;
+            background: #FFF;
+            margin-left: 20px;
+            width: 250px;
+            border-radius: 7px;
+        }
+
+        .c3 label{
+            font-size: 20px;
+            font-weight: 600;
+            padding: 20px;
+        }
+
+        .nav a{
+            color: #FFF;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="user">
+            <div class="circle"></div>
+            <div class="info">
+                <h1>Jason O. Asare</h1>
+                <span>mypaapa.asare@gmail.com</span>
+            </div>
+        </div>
+        
+        <div class="sideNav">
+            <a class="outline" href="">Dashboard</a>
+            <a href="">Inventory</a>
+            <a href="">Orders</a>
+            <a href="">Purchase</a>
+            <a href="">Reporting</a>
+            <a href="">Support</a>
+            <a href="">Settings</a>
+        </div>
+        <a href="login.html">Logout</a>
+    </div>
+    <main>
+        <div class="nav2">
+            <label for="">Welcome Jason !</label>
+            <div class="nav2-content">
+                <input type="search" placeholder="Search">
+            </div>
+        </div>
+        <div class="over-view">
+            <label for="">Over View</label>
+            <div class="over-content">
+                <div class="card">
+                    <span>5483</span>
+                    <span>Total Productes</span>
+                </div>
+                <div class="card">
+                    <span>5483</span>
+                    <span>Total Productes</span>
+                </div>
+                <div class="card">
+                    <span>5483</span>
+                    <span>Total Productes</span>
+                </div>
+                <div class="card2">
+                    <span>5483</span>
+                    <span>Total Productes</span>
+                </div>
+            </div>
+        </div>
+        <div class="main2">
+            <div class="c1">
+                <label for="">No of users</label>
+                <span class="span1">583 K</span>
+                <span class="span2">Total customers</span>
+            </div>
+            <div class="c2">
+                <label for="">Inventory Values</label>
+            </div>
+            <div class="c3">
+                <label for="">Top 10 Store by sale</label>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>
