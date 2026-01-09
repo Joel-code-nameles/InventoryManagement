@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        :root{
+            --nav: #255267;
+            --bg: #c6e3ea;
+            --card: #f7fafd;
+            --font: #2c434d;
+            --border: #acb0b0;
+            --button-bg: #d8ecf6;
+        }
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;;
+        }
+
+        body{
+            background: var(--bg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .card{
+            background: var(--card);
+            width: 400px;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            align-items: center;
+            margin-left: 35%;
+            margin-top: 10%;
+            border-radius: 7px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-info input{ 
+            display: flex;
+            flex-direction: column;
+            height: 6vh;
+            width: 300px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 2px solid var(--border);
+        }
+
+        .card .dash{
+            height: 6vh;
+            width: 300px;
+            border-radius: 5px;
+            background: var(--nav);
+            color: var(--button-bg);
+            border: none;
+            font-size: 17px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card label{
+            margin-bottom: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--font);
+        }
+
+        .card-info input::placeholder{
+            padding: 20px;
+        }
+
+        .card p{
+            margin-top: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+     <div class="bg-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="card">
+        <label>Login</label>
+        <div class="card-info">
+            <form method="post">
+                <input type="text" placeholder="Email" name="email">
+                <input type="password" placeholder="Password" name="pass">
+            </form>
+        </div>
+        <a class="dash" href="dashboard.html">Submit</a>
+        <p>Don't have an account? <a class="reg" href="register.html">Sign up</a></p>
+    </div>
+
+</body>
+</html>
