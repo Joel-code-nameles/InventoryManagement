@@ -17,21 +17,41 @@ def Register(request):
         if Registration.objects.filter(username = username).exists():
             messages.error(request, "Username is already in existence")
             return redirect('register')
-        
+
         hashed_password = make_password(password)
 
-        userAccount = Register.object.create(
+        userAccount = Registration.objects.create(
             email = email,
             username = username,
             password = password,
+
         )
-        
         userAccount.save()
-        messages.success(request, "Account successfully created")
+        messages.success(request, "Account already created")
         return redirect('login')
-    return render(request, 'templates/login.html')
+
+    return render(request, "pages/register.html")
+
 
 def Login(request):
     if request.method == 'POST':
         email = request.POST['email']
-        password
+        password = request.POST['password']
+
+        try:
+            userAccount = Registration.objects.get(email = email)
+
+            if check_password(password, userAccount.password):
+                messages.success(request, f"Let Get Managing {userAccount.username}")
+                return render(request, "pages/login.html")
+
+            else:
+                messages.error(request, "Wrong Password")
+                return redirect('login')
+
+        except Registration.DoesNotExist():
+            messages.error(request, "Wrong Email or Password")
+            return redirect('login')
+
+    return render(request, "pages/Dashboard.html")
+
