@@ -17,4 +17,21 @@ def Register(request):
         if Registration.objects.filter(username = username).exists():
             messages.error(request, "Username is already in existence")
             return redirect('register')
+        
+        hashed_password = make_password(password)
 
+        userAccount = Register.object.create(
+            email = email,
+            username = username,
+            password = password,
+        )
+        
+        userAccount.save()
+        messages.success(request, "Account successfully created")
+        return redirect('login')
+    return render(request, 'templates/login.html')
+
+def Login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password
