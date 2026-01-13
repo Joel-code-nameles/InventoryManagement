@@ -88,14 +88,24 @@
         <label>Register</label>
         <div class="card-info">
             <form method="post">
+                {% csrf_token %}
                 <input type="text" placeholder="Email" name="email">
-                <input type="text" placeholder="Username" name="user">
-                <input type="password" placeholder="Password" name="pass">
-                <input type="text" placeholder="Confirm Password" name="confirm_pass">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <input type="text" placeholder="Confirm Password" name="conf_password">
+                <button type="submit">Submit</button>
             </form>
         </div>
-        <button>Submit</button>
+
+
         <p>Already have an account? <a href="login.html">Sign in</a></p>
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
 </body>

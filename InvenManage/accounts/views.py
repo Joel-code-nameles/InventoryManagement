@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password, check_password
 # Create your views here.
 def Register(request):
     if request.method == "POST":
-        email = request.POST['email']
+        userEmail = request.POST['email']
         username = request.POST['username']
         password = request.POST['password']
         conf_password = request.POST['conf_password']
@@ -17,14 +17,14 @@ def Register(request):
         if Registration.objects.filter(username = username).exists():
             messages.error(request, "Username is already in existence")
             return redirect('register')
-
+        
         hashed_password = make_password(password)
 
         userAccount = Registration.objects.create(
-            email = email,
+            userEmail = userEmail,
             username = username,
             password = password,
-
+            
         )
         userAccount.save()
         messages.success(request, "Account already created")
@@ -35,23 +35,26 @@ def Register(request):
 
 def Login(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        userEmail = request.POST['userEmail']
         password = request.POST['password']
 
         try:
-            userAccount = Registration.objects.get(email = email)
+            userAccount = Registration.objects.get(userEmail = userEmail)
 
             if check_password(password, userAccount.password):
-                messages.success(request, f"Let Get Managing {userAccount.username}")
-                return render(request, "pages/login.html")
+                messages.success(request, f"Welcome {userAccount.username}")
+                return redirect('dashboard')
 
             else:
-                messages.error(request, "Wrong Password")
+                messages.error(request, "Wrong Email or Password")
                 return redirect('login')
 
-        except Registration.DoesNotExist():
+        except Registration.DoesNotExist:
             messages.error(request, "Wrong Email or Password")
             return redirect('login')
 
-    return render(request, "pages/Dashboard.html")
+    return render(request, "pages/login.html")
 
+
+def dashboard(request):
+    return render(request, 'pages/dashboard.html')
