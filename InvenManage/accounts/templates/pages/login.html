@@ -94,10 +94,12 @@
         <label>Login</label>
         <div class="card-info">
             <form method="post">
+
+                {% csrf_token %}
                 <input type="text" placeholder="Email" name="email">
                 <input type="password" placeholder="Password" name="pass">
-                <a class="dash" href="dashboard.html">Submit</a>
-                <p>Don't have an account? <a class="reg" href="register.html">Sign up</a></p>
+                <a class="dash" href="">Submit</a>
+                <p>Don't have an account? <a class="reg" href="{% url 'register' %}">Sign up</a></p>
             </form>
         </div>
     </div>
