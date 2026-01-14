@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import Registration
+from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
@@ -23,11 +24,10 @@ def Register(request):
         userAccount = Registration.objects.create(
             userEmail = userEmail,
             username = username,
-            password = password,
-            
+            password = hashed_password,
         )
         userAccount.save()
-        messages.success(request, "Account already created")
+        messages.success(request, "Account successfully created")
         return redirect('login')
 
     return render(request, "pages/register.html")
@@ -35,25 +35,26 @@ def Register(request):
 
 def Login(request):
     if request.method == 'POST':
-        userEmail = request.POST['userEmail']
-        password = request.POST['password']
+        userEmail = request.POST.get('userEmail')
+        password = request.POST.get('password')
 
         try:
-            userAccount = Registration.objects.get(userEmail = userEmail)
+            user = Registration.objects.get(userEmail__iexact=userEmail)
 
-            if check_password(password, userAccount.password):
-                messages.success(request, f"Welcome {userAccount.username}")
+            if check_password(password, user.password):
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                login(request, user)
+                messages.success(request, f"Welcome {user.username}")
                 return redirect('dashboard')
 
-            else:
-                messages.error(request, "Wrong Email or Password")
-                return redirect('login')
-
         except Registration.DoesNotExist:
-            messages.error(request, "Wrong Email or Password")
-            return redirect('login')
+            pass
+
+        messages.error(request, "Wrong Email or Password")
+        return redirect('login')
 
     return render(request, "pages/login.html")
+
 
 
 def dashboard(request):
