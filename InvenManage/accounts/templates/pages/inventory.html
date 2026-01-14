@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Inventory</title>
     <style>
-                  *{
+                *{
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
@@ -99,14 +99,16 @@
         font-weight: 700;
         }
 
-        .dash button{
+        .dash button, .a{
             width: 130px;
             height: 40px;
             background: #0a5ece;
-            color: #d6e3ec;
+            color: white;
             border-radius: 7px;
             border: none;
             font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
         }
 
         .user span{
@@ -174,6 +176,59 @@
         .let{
             color: rgba(0, 0, 0, 0.518);
         }
+
+        .head h2 {
+        color: #2c434d;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        
+        }
+
+        table {
+        width: 1105px;
+        margin-left: 40px;
+        border-collapse: collapse;
+        border-radius: 7px;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        font-size: 15px;
+        }
+
+        th, td {
+        padding: 14px 16px;
+        text-align: left;
+        }
+
+        th {
+        background: #0a5ece;
+        
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.4px;
+        }
+
+
+        .head{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 40px;
+            width: 1105px;
+            padding: 10px;
+        }
+
+        .head input{
+            width: 200px;
+            height: 30px;
+        }
+
+        .head input::placeholder{
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -183,8 +238,8 @@
         </div>
         
         <div class="sideNav">
-            <a class="outline" href="dashboard.html">Dashboard</a>
-            <a class="link" href="inventory.html"><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
+            <a class="link" href="dashboard.html">Dashboard</a>
+            <a class="outline" href=""><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
             <a class="link" href="stock.html">Low Stock</a>
             <a class="link" href="">Creat Invoice</a>
             <a class="link" href="">Invoices</a>
@@ -195,7 +250,8 @@
     </div>
     <main>
         <div class="dash">
-            <span>Dashboard</span>
+            <span>Inventory</span>
+            <button><a class="a" href="add_product.html">Add product</a></button>
         </div>
         <div class="over-view">
             <div class="over-content">
@@ -217,7 +273,39 @@
                 </div>
             </div>
         </div>
+        <div class="table">
+            <div class="head">
+                <h2>Products list</h2>
+                <input type="search" placeholder="Search">
+            </div>
+            <table>
+                <tr>
+                <th class="cr">PRODUCT</th>
+                <th>SKU</th>
+                <th>CATEGORY</th>
+                <th>STOCK</th>
+                <th>COST</th>
+                <th>SELL</th>
+                <th>STATUS</th>
+                <th class="cr2">ACTION</th>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+        </div>
+    </div>
     </main>
-    
 </body>
 </html>
