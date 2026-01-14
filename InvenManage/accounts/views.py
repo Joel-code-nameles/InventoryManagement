@@ -25,10 +25,9 @@ def Register(request):
             userEmail = userEmail,
             username = username,
             password = hashed_password,
-            
         )
         userAccount.save()
-        messages.success(request, "Account created")
+        messages.success(request, "Account successfully created")
         return redirect('login')
 
     return render(request, "pages/register.html")
@@ -36,11 +35,11 @@ def Register(request):
 
 def Login(request):
     if request.method == 'POST':
-        userEmail = request.POST.get("userEmail")
-        password = request.POST.get("password")
+        userEmail = request.POST.get('userEmail')
+        password = request.POST.get('password')
 
         try:
-            user = Registration.objects.get(userEmail__iexact = userEmail)
+            user = Registration.objects.get(userEmail__iexact=userEmail)
 
             if check_password(password, user.password):
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
@@ -50,11 +49,12 @@ def Login(request):
 
         except Registration.DoesNotExist:
             pass
+
         messages.error(request, "Wrong Email or Password")
         return redirect('login')
 
-
     return render(request, "pages/login.html")
+
 
 
 def dashboard(request):
