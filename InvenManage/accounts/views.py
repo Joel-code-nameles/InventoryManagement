@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import Registration
+from .models import Product
 from django.contrib.auth import login
 from django.contrib.auth.hashers import make_password, check_password
 
@@ -55,7 +56,39 @@ def Login(request):
 
     return render(request, "pages/login.html")
 
-
-
 def dashboard(request):
     return render(request, 'pages/dashboard.html')
+
+def inventory(request):
+    if request.method == 'POST':
+        SKU = request.POST['SKU']
+        product_name = request.POST['product_name']
+        category = request.POST['category']
+        description = request.POST['description']
+        price = request.POST['price']
+        sales_price = request.POST['sales_price']
+        initial_quantity = request.POST['initial_quantity']
+        low_stock_alert = request.POST['low_stock_alert']
+
+        product_acc = Product.objects.create(
+            SKU = SKU,
+            product_name = product_name,
+            category = category,
+            description = description,
+            price = price,
+            sales_price = sales_price,
+            initial_quantity = initial_quantity,
+            low_stock_alert = low_stock_alert,
+        )
+        product_acc.save()
+        messages.success(request, 'Products added successfully')
+        return redirect('inventory')
+
+    return render(request, 'pages/inventory.html')
+
+def add_product(request):
+    return render(request, 'pages/add_product.html')
+
+def stock(request):
+    return render(request, 'pages/stock.html')
+

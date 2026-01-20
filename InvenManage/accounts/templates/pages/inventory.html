@@ -238,9 +238,9 @@
         </div>
         
         <div class="sideNav">
-            <a class="link" href="dashboard.html">Dashboard</a>
-            <a class="outline" href=""><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="link" href="stock.html">Low Stock</a>
+            <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="outline" href="{% url 'inventory' %}"><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
+            <a class="link" href="{% url 'stock'%}">Low Stock</a>
             <a class="link" href="">Creat Invoice</a>
             <a class="link" href="">Invoices</a>
             <a class="link" href="">Customers</a>
@@ -251,7 +251,7 @@
     <main>
         <div class="dash">
             <span>Inventory</span>
-            <button><a class="a" href="add_product.html">Add product</a></button>
+            <button><a class="a" href="{% url 'add_product' %}">Add product</a></button>
         </div>
         <div class="over-view">
             <div class="over-content">
