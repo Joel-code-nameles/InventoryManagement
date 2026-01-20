@@ -356,60 +356,66 @@
                 <div class="top">
                     <span>Basic Information</span>
                 </div>
-                <div class="second">
-                    <div class="finput">
-                        <span class="span1">SKU</span>
-                        <input type="text" placeholder="e.g, POOL-001">
-                        <span class="span2">Unique identifier</span>
+                <form method="post">
+                    <div class="second">
+                        <div class="finput">
+                            <span class="span1">SKU</span>
+                            <input type="text" placeholder="e.g, POOL-001" name="SKU">
+                            <span class="span2">Unique identifier</span>
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Product Name</span>
+                            <input type="text" placeholder="e.g, Chlorine Tablets" name="product_name">
+                        </div>
                     </div>
-                    <div class="finput">
-                        <span class="span1">Product Name</span>
-                        <input type="text" placeholder="e.g, Chlorine Tablets">
+                    <div class="last">
+                        <div class="linput">
+                            <span class="span1">Category</span>
+                            <input class="inp1" type="text" placeholder="e.g, Chemicals" name="category">
+                        </div>
+                        <div class="linput2">
+                            <span class="span1">Description</span>
+                            <textarea class="inp2" name="note" placeholder="Detailed product info..." name="description"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="last">
-                    <div class="linput">
-                        <span class="span1">Category</span>
-                        <input class="inp1" type="text" placeholder="e.g, Chemicals">
-                    </div>
-                    <div class="linput2">
-                        <span class="span1">Description</span>
-                        <textarea class="inp2" name="note" placeholder="Detailed product info..."></textarea>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="pricing">
                 <div class="top">
                     <span>Pricing</span>
                 </div>
-                <div class="first">
-                    <div class="finput">
-                        <span class="span1">Cost Price (GHC)</span>
-                        <input type="text" placeholder="0">
-                        <span class="span2">Your cost per unit</span>
+                <form method="post">
+                    <div class="first">
+                        <div class="finput">
+                            <span class="span1">Cost Price (GHC)</span>
+                            <input type="text" placeholder="0" name="price">
+                            <span class="span2">Your cost per unit</span>
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Selling Price (GHC)</span>
+                            <input type="text" placeholder="0" name="sales_price">
+                            <span class="span2">Auto-filled with 30% margin</span>
+                        </div>
                     </div>
-                    <div class="finput">
-                        <span class="span1">Selling Price (GHC)</span>
-                        <input type="text" placeholder="0">
-                        <span class="span2">Auto-filled with 30% margin</span>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="stock">
                  <div class="top">
                     <span>Stock Management</span>
                 </div>
-                <div class="first">
-                    <div class="finput">
-                        <span class="span1">Initial Quantity</span>
-                        <input type="text" placeholder="0">
+                <form method="post">
+                    <div class="first">
+                        <div class="finput">
+                            <span class="span1">Initial Quantity</span>
+                            <input type="text" placeholder="0" name="initial_quantity">
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Low Stock Alert</span>
+                            <input type="text" placeholder="5" name="low_stock_alert">
+                            <span class="span2">Notify when stock > this</span>
+                        </div>
                     </div>
-                    <div class="finput">
-                        <span class="span1">Low Stock Alert</span>
-                        <input type="text" placeholder="5">
-                        <span class="span2">Notify when stock > this</span>
-                    </div>
-                </div>
+                </form>
             </div>
             <div class="extra">
                 <button class="b1"><a class="s" href="inventory.html">Cancle</a></button>
