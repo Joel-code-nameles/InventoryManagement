@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+                *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root{
+            --nav: #255267;
+            --bg: #c6e3ea;
+            --card: #f7fafd;
+            --font: #2c434d;
+            --border: #acb0b0;
+            --button-bg: #d8ecf6;
+        }
+
+
+        body{
+            display: flex;
+
+        }
+
+        main{
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            left: 15%;
+        }
+
+        .nav{
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(45deg, #0a5ece , #042d70);
+            height: 100vh;
+            width: 15%;
+            padding: 20px;
+            position: fixed;
+        }
+
+
+
+        .user{
+            display: flex;
+            flex-direction: column;
+            margin-top: 5%;
+        }
+
+        
+        .sideNav a{
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .sideNav{
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+
+        .outline{
+            background: rgba(255, 255, 255, 0.322);
+            padding: 10px;
+            border-radius: 7px;
+            width: 160px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        main .dash{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            padding-left: 40px;
+            padding-right: 40px;
+            margin-top: 10px;
+            align-items: center;
+        }
+
+        .dash span{
+        color: #0a5ece;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        }
+
+        .dash button, .a{
+            width: 80px;
+            height: 40px;
+            background: none;
+            color: gray;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .dash button{
+            border: 2px solid gray;
+        }
+
+        .user span{
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .link:hover{
+            background: rgba(255, 255, 255, 0.322);
+            border-radius: 7px;
+            width: 160px;
+            height: 40px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 2s;
+        }
+
+        .card{
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            margin-left: 40px;
+            width: 1105px;
+            height: 175vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            
+            border-radius: 7px;
+        }
+
+        .basic{
+            position: relative;
+            width: 90%;
+            height: 75vh;
+            margin-top: 40px;
+            border-radius: 7px;
+            padding: 30px;
+            margin-left: 5%;
+            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+        }
+
+        .basic::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: #0a5ece;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .top span{
+            color: #0a5ece;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .second{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .finput{
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .finput input{
+            width: 460px;
+            height: 40px;
+            border-radius: 7px;
+            border: 1px solid grey;
+        }
+
+        .finput input::placeholder{
+            padding: 20px;
+        }
+
+        .span1{
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .span2{
+            margin-top: 5px;
+            color: rgba(0, 0, 0, 0.47);
+        }
+
+        .last{
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .linput, .linput2{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inp1{
+            width: 460px;
+            height: 40px;
+            border-radius: 7px;
+            border: 1px solid gray;
+        }
+
+        .inp1::placeholder{
+            padding: 20px;
+        }
+
+        .linput2{
+            margin-top: 20px;
+        }
+
+        .linput2 textarea{
+            height: 20vh;
+            border-radius: 7px;
+        }
+
+        .linput2 textarea::placeholder{
+            padding: 20px;
+        }
+
+        .pricing{
+            margin-top: 40px;
+             position: relative;
+            width: 90%;
+            height: 32vh;
+            margin-left: 5%;
+            border-radius: 7px;
+            padding: 30px;
+            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+        }
+
+        .pricing::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: #0a5ece;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .first{
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            gap: 20px;
+        }
+
+        .stock{
+            margin-top: 40px;
+            position: relative;
+            width: 90%;
+            margin-left: 5%;
+            height: 32vh;
+            border-radius: 7px;
+            padding: 30px;
+            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+        }
+
+        .stock::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: #0a5ece;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .b1, .s{
+            width: 90px;
+            height: 40px;
+            background: none;
+            color: gray;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .b1{
+            border: 2px solid gray;
+        }
+
+        .b2, .s2{
+            width: 130px;
+            height: 40px;
+            background: #0a5ece;
+            color: white;
+            border-radius: 7px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .extra{
+            margin-top: 40px;
+            display: flex;
+            gap: 10px;
+            margin-left: 74.5%;
+        }
+    </style>
+</head>
+<body>
+     <div class="nav">
+        <div class="user">
+           <span>Asare</span>
+        </div>
+        
+        <div class="sideNav">
+            <a class="link" href="dashboard.html">Dashboard</a>
+            <a class="outline" href=""><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
+            <a class="link" href="stock.html">Low Stock</a>
+            <a class="link" href="">Creat Invoice</a>
+            <a class="link" href="">Invoices</a>
+            <a class="link" href="">Customers</a>
+            <a class="link" href="">Sales Report</a>
+            <a class="link" href="">Stock Report</a>
+        </div>
+    </div>
+    <main>
+        <div class="dash">
+            <span>Add New Product</span>
+            <button><a class="a" href="inventory.html">Back</a></button>
+        </div>
+        <div class="card">
+            <div class="basic">
+                <div class="top">
+                    <span>Basic Information</span>
+                </div>
+                <form method="post">
+                    <div class="second">
+                        <div class="finput">
+                            <span class="span1">SKU</span>
+                            <input type="text" placeholder="e.g, POOL-001" name="SKU">
+                            <span class="span2">Unique identifier</span>
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Product Name</span>
+                            <input type="text" placeholder="e.g, Chlorine Tablets" name="product_name">
+                        </div>
+                    </div>
+                    <div class="last">
+                        <div class="linput">
+                            <span class="span1">Category</span>
+                            <input class="inp1" type="text" placeholder="e.g, Chemicals" name="category">
+                        </div>
+                        <div class="linput2">
+                            <span class="span1">Description</span>
+                            <textarea class="inp2" name="note" placeholder="Detailed product info..." name="description"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="pricing">
+                <div class="top">
+                    <span>Pricing</span>
+                </div>
+                <form method="post">
+                    <div class="first">
+                        <div class="finput">
+                            <span class="span1">Cost Price (GHC)</span>
+                            <input type="text" placeholder="0" name="price">
+                            <span class="span2">Your cost per unit</span>
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Selling Price (GHC)</span>
+                            <input type="text" placeholder="0" name="sales_price">
+                            <span class="span2">Auto-filled with 30% margin</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="stock">
+                 <div class="top">
+                    <span>Stock Management</span>
+                </div>
+                <form method="post">
+                    <div class="first">
+                        <div class="finput">
+                            <span class="span1">Initial Quantity</span>
+                            <input type="text" placeholder="0" name="initial_quantity">
+                        </div>
+                        <div class="finput">
+                            <span class="span1">Low Stock Alert</span>
+                            <input type="text" placeholder="5" name="low_stock_alert">
+                            <span class="span2">Notify when stock > this</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="extra">
+                <button class="b1"><a class="s" href="inventory.html">Cancle</a></button>
+                <button class="b2"><a class="s2" href="add_product.html">Add product</a></button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -22,13 +22,13 @@
         }
 
         body{
-            background: var(--bg);
+            background: white;
             width: 100%;
             height: 100%;
         }
 
         .card{
-            background: var(--card);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             width: 400px;
             height: 350px;
             display: flex;
@@ -39,7 +39,6 @@
             margin-left: 35%;
             margin-top: 10%;
             border-radius: 7px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .card-info input{ 
@@ -47,7 +46,7 @@
             flex-direction: column;
             height: 6vh;
             width: 300px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             border-radius: 5px;
             border: 2px solid var(--border);
         }
@@ -56,8 +55,8 @@
             height: 6vh;
             width: 300px;
             border-radius: 5px;
-            background: var(--nav);
-            color: var(--button-bg);
+            background: #0a5ece;
+            color: white;
             border: none;
             font-size: 17px;
             cursor: pointer;
@@ -95,6 +94,7 @@
         <label>Login</label>
         <div class="card-info">
             <form method="post">
+<<<<<<< HEAD
                 {% csrf_token %}
                 <input type="text" placeholder="Email" name="userEmail">
                 <input type="password" placeholder="Password" name="password">
@@ -110,6 +110,14 @@
                 {% endfor %}
             </ul>
         {% endif %}
+=======
+                <input type="text" placeholder="Email" name="email">
+                <input type="password" placeholder="Password" name="pass">
+                <button class="dash" type="submit">Submit</button>
+                <p>Don't have an account? <a class="reg" href="register.html">Sign up</a></p>
+            </form>
+        </div>
+>>>>>>> 9a6f302ecba4530ae407444a5ec796cf015ad59d
     </div>
 
 </body>

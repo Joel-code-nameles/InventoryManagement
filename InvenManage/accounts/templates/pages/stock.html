@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Document</title>
     <style>
-                  *{
+                *{
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
@@ -99,14 +99,19 @@
         font-weight: 700;
         }
 
-        .dash button{
-            width: 130px;
+        .dash button, .a{
+            width: 150px;
             height: 40px;
-            background: #0a5ece;
-            color: #d6e3ec;
+            background: none;
+            color: gray;
             border-radius: 7px;
-            border: none;
             font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .dash button{
+            border: 2px solid gray;
         }
 
         .user span{
@@ -151,8 +156,10 @@
             display: flex;
             flex-direction: column;
             border-radius: 7px;
-            width: 265px;
-            height: 100px;
+            width: 555px;
+            align-items: center;
+            height: 120px;
+            justify-content: center;
         }
 
         .over-view label{
@@ -166,13 +173,78 @@
             color: yellow;
         }
 
-        .num ,.yellow{
+        .num ,.yellow, .red{
             font-size: 25px;
             font-weight: 700;
         }
 
+        .red{
+            color: red;
+        }        
+
+        .red, .yellow{
+            font-size: 40px;
+            font-weight: 800;
+        }
+
         .let{
             color: rgba(0, 0, 0, 0.518);
+        }
+
+        .head h2 {
+        color: #2c434d;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        }
+
+         table {
+        width: 1105px;
+        margin-left: 40px;
+        border-collapse: collapse;
+        border-radius: 7px;
+        overflow: hidden;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        font-size: 15px;
+        }
+
+        th, td {
+        padding: 14px 16px;
+        text-align: left;
+        }
+
+        th {
+        background: #0a5ece;
+        
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.4px;
+        }
+
+
+        .head{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: 40px;
+            width: 1105px;
+            padding: 10px;
+        }
+
+        .head input{
+            width: 200px;
+            height: 30px;
+        }
+
+        .head input::placeholder{
+            padding: 20px;
+        }
+
+        .table{
+            margin-top: 80px;
         }
     </style>
 </head>
@@ -183,52 +255,64 @@
         </div>
         
         <div class="sideNav">
-            <a class="outline" href="dashboard.html">Dashboard</a>
+            <a class="link" href="dashboard.html">Dashboard</a>
             <a class="link" href="inventory.html"><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="link" href="stock.html">Low Stock</a>
+            <a class="outline" href="stock.html">Low Stock</a>
             <a class="link" href="">Creat Invoice</a>
             <a class="link" href="">Invoices</a>
             <a class="link" href="">Customers</a>
             <a class="link" href="">Sales Report</a>
             <a class="link" href="">Stock Report</a>
         </div>
-<<<<<<< HEAD
-        <a href="{% url 'login' %}">Logout</a>
-    </div>
-    <main>
-        <div class="nav2">
-            <label for="">Welcome {{ username }} !</label>
-            <div class="nav2-content">
-                <input type="search" placeholder="Search">
-            </div>
-=======
     </div>
     <main>
         <div class="dash">
-            <span>Dashboard</span>
->>>>>>> 9a6f302ecba4530ae407444a5ec796cf015ad59d
+            <span>Low Stock Alert</span>
+            <button><a class="a" href="inventory.html">Back to Inventory</a></button>
         </div>
         <div class="over-view">
             <div class="over-content">
-                <div class="card">
-                    <span class="let">Total Productes</span>
-                    <span class="num">0</span>
-                </div>
-                <div class="card">
-                    <span class="let">Items in Stock</span>
-                    <span class="num">0</span>
-                </div>
                 <div class="card">
                     <span class="let">Low Stock Items</span>
                     <span class="yellow">0</span>
                 </div>
                 <div class="card">
-                    <span class="let">Stock Value</span>
-                    <span class="num">GHC 0.00</span>
+                    <span class="let">Out of stock</span>
+                    <span class="red">0</span>
                 </div>
             </div>
         </div>
-    </main>
-    
+        <div class="table">
+            <div class="head">
+                <h2>Products Needing Restock</h2>
+                <input type="search" placeholder="Search">
+            </div>
+            <table>
+                <tr>
+                <th class="cr">PRODUCT</th>
+                <th>SKU</th>
+                <th>CATEGORY</th>
+                <th>STOCK</th>
+                <th>COST</th>
+                <th>SELL</th>
+                <th>STATUS</th>
+                <th class="cr2">ACTION</th>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+        </div>
 </body>
 </html>
