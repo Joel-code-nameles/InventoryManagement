@@ -58,4 +58,7 @@ def Login(request):
 
 
 def dashboard(request):
-    return render(request, 'pages/dashboard.html')
+    username = ''
+    if hasattr(request, 'user') and getattr(request.user, 'is_authenticated', False):
+        username = getattr(request.user, 'username', '')
+    return render(request, 'pages/dashboard.html', {'username': username})

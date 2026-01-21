@@ -285,11 +285,11 @@
             <a href="">Support</a>
             <a href="">Settings</a>
         </div>
-        <a href="login.html">Logout</a>
+        <a href="{% url 'login' %}">Logout</a>
     </div>
     <main>
         <div class="nav2">
-            <label for="">Welcome Jason !</label>
+            <label for="">Welcome {{ username }} !</label>
             <div class="nav2-content">
                 <input type="search" placeholder="Search">
             </div>
