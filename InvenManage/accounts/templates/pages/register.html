@@ -28,6 +28,7 @@
         }
 
         .card{
+            background: var(--card);
             width: 500px;
             height: 70vh;
             display: flex;
@@ -45,7 +46,7 @@
             flex-direction: column;
             height: 6vh;
             width: 300px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 5px;
             border: 2px solid var(--border);
         }
@@ -54,8 +55,8 @@
             height: 6vh;
             width: 300px;
             border-radius: 5px;
-            background: #0a5ece;
-            color: white;
+            background: var(--nav);
+            color: var(--button-bg);
             border: none;
             font-size: 17px;
             cursor: pointer;
@@ -75,6 +76,8 @@
         .card p{
             margin-top: 10px;
         }
+
+       
     </style>
 </head>
 <body>
@@ -87,34 +90,14 @@
         <label>Register</label>
         <div class="card-info">
             <form method="post">
-                {% csrf_token %}
                 <input type="text" placeholder="Email" name="email">
-<<<<<<< HEAD
-                <input type="text" placeholder="Username" name="username">
-                <input type="password" placeholder="Password" name="password">
-                <input type="text" placeholder="Confirm Password" name="conf_password">
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-
-
-        <p>Already have an account? <a href="login.html">Sign in</a></p>
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-=======
                 <input type="text" placeholder="Username" name="user">
                 <input type="password" placeholder="Password" name="pass">
                 <input type="text" placeholder="Confirm Password" name="confirm_pass">
-                <button type="submit">Submit</button>
-                <p>Already have an account? <a href="login.html">Sign in</a></p>
             </form>
         </div>
->>>>>>> 9a6f302ecba4530ae407444a5ec796cf015ad59d
+        <button>Submit</button>
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
     </div>
 
 </body>
