@@ -404,6 +404,7 @@
                     <span>Stock Management</span>
                 </div>
                 <form method="post">
+                    {% csrf_token %}
                     <div class="first">
                         <div class="finput">
                             <span class="span1">Initial Quantity</span>
@@ -415,11 +416,19 @@
                             <span class="span2">Notify when stock > this</span>
                         </div>
                     </div>
+                    {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
                 </form>
             </div>
             <div class="extra">
                 <button class="b1"><a class="s" href="{% url 'inventory' %}">Cancel</a></button>
                 <button class="b2"><a class="s2" href="{% url 'add_product' %}">Add product</a></button>
+
             </div>
         </div>
     </main>

@@ -44,7 +44,6 @@ def Login(request):
 
             if check_password(password, user.password):
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
-                login(request, user)
                 messages.success(request, f"Welcome {user.username}")
                 return redirect('dashboard')
 
@@ -60,6 +59,9 @@ def dashboard(request):
     return render(request, 'pages/dashboard.html')
 
 def inventory(request):
+    return render(request, 'pages/inventory.html')
+
+def add_product(request):
     if request.method == 'POST':
         SKU = request.POST['SKU']
         product_name = request.POST['product_name']
@@ -84,9 +86,6 @@ def inventory(request):
         messages.success(request, 'Products added successfully')
         return redirect('inventory')
 
-    return render(request, 'pages/inventory.html')
-
-def add_product(request):
     return render(request, 'pages/add_product.html')
 
 def stock(request):

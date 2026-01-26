@@ -76,6 +76,7 @@
             margin-top: 10px;
         }
 
+        
        
     </style>
 </head>
@@ -95,6 +96,13 @@
                 <input type="password" placeholder="Password" name="password">
                 <input type="text" placeholder="Confirm Password" name="conf_password">
                 <button type="submit">Submit</button>
+                <li>
+                    {% if messages %}
+                            {% for message in messages %}  
+                                {{ message }}
+                    {% endfor %}
+                {% endif %}
+                </li>
                 <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
             </form>
         </div>

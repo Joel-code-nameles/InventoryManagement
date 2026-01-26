@@ -98,6 +98,15 @@
                 <input type="text" placeholder="Email" name="userEmail">
                 <input type="password" placeholder="Password" name="password">
                 <button class="dash" type="submit">Submit</button>
+                <li>
+                    {% if messages %}
+                            {% for message in messages %}  
+
+                                {{ message }}
+                                
+                    {% endfor %}
+                {% endif %}
+                </li>
                 <p>Don't have an account? <a class="reg" href="{% url 'register' %}">Sign up</a></p>
             </form>
         </div>
