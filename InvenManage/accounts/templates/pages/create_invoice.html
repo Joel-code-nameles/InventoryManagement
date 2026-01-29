@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css">
+    <style>
+                   *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root{
+            --nav: #255267;
+            --bg: #c6e3ea;
+            --card: #f7fafd;
+            --font: #2c434d;
+            --border: #acb0b0;
+            --button-bg: #d8ecf6;
+        }
+
+
+        body{
+            display: flex;
+
+        }
+
+        main{
+            width: 85%;
+            height: 100%;
+            position: absolute;
+            left: 15%;
+        }
+
+        .nav{
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(45deg, #0a5ece , #042d70);
+            height: 100vh;
+            width: 15%;
+            position: fixed;
+            padding: 20px;
+        }
+
+
+
+        .user{
+            display: flex;
+            flex-direction: column;
+            margin-top: 5%;
+        }
+
+        
+          .sideNav a{
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      color: white;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
+        }
+
+    .sideNav { list-style: none; padding: 0 1rem; }
+
+        .sideNav{
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sideNav a:hover,
+        .sideNav a.active {
+            background: rgba(59, 130, 246, .15);
+            color: #fff;
+        }
+
+
+
+
+        .outline{
+            background: rgba(255, 255, 255, 0.322);
+            padding: 10px;
+            border-radius: 7px;
+            width: 160px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .user span{
+            color: white;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="user">
+           <span>Asare</span>
+        </div>
+        <div class="sideNav">
+            <a class="link" href="dashboard.html"><i class="fas fa-chart-bar "></i>Dashboard</a>
+            <a class="link" href="inventory.html"><i class="fas fa-shelves"></i>Inventory</a>
+            <a class="link" href="stock.html"><i class="fa fa-car"></i>Low Stock</a>
+            <a class="active" href="create_invoice.html">Creat Invoice</a>
+            <a class="link" href="invoice.html"><i class="fas fa-receipt"></i>Invoices</a>
+            <a class="link" href="">Customers</a>
+            <a class="link" href="">Sales Report</a>
+            <a class="link" href="">Stock Report</a>
+        </div>
+    </div>
+</body>
+</html>
