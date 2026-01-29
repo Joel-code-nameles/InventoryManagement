@@ -12,6 +12,19 @@ def Register(request):
         username = request.POST['username']
         password = request.POST['password']
         conf_password = request.POST['conf_password']
+
+        if username == '':
+            messages.error(request, 'All fields required')
+            return redirect('register')
+
+        if userEmail == '':
+           messages.error(request, 'All fields required')
+           return redirect('register')
+
+        if password == '':
+            messages.error(request, 'All fiels required')
+            return redirect('register')
+
         if password != conf_password:
             messages.error(request,"Passwords do not match.")
             return redirect('register')
@@ -29,7 +42,7 @@ def Register(request):
         )
         userAccount.save()
         messages.success(request, "Account successfully created")
-        return redirect('login')
+        return redirect('dashboard')
 
     return render(request, "pages/register.html")
 
@@ -41,6 +54,14 @@ def Login(request):
 
         try:
             user = Registration.objects.get(userEmail__iexact=userEmail)
+
+            if userEmail == '':
+                messages.error(request, 'All fields required')
+                return redirect('login')
+            
+            if password == '':
+                messages.error(request, 'All fields required')
+                return redirect('login')
 
             if check_password(password, user.password):
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
@@ -63,14 +84,17 @@ def inventory(request):
 
 def add_product(request):
     if request.method == 'POST':
-        SKU = request.POST['SKU']
-        product_name = request.POST['product_name']
-        category = request.POST['category']
-        description = request.POST['description']
-        price = request.POST['price']
-        sales_price = request.POST['sales_price']
-        initial_quantity = request.POST['initial_quantity']
-        low_stock_alert = request.POST['low_stock_alert']
+        SKU = request.POST.get('SKU')
+        product_name = request.POST.get('product_name')
+        category = request.POST.get('category')
+        description = request.POST.get('description')
+        price = request.POST.get('price')
+        sales_price = request.POST.get('sales_price')
+        initial_quantity = request.POST.get('initial_quantity')
+        low_stock_alert = request.POST.get('low_stock_alert')
+
+        if SKU == '':
+            messages.error(request, 'All fields required')
 
         product_acc = Product.objects.create(
             SKU = SKU,
@@ -84,10 +108,9 @@ def add_product(request):
         )
         product_acc.save()
         messages.success(request, 'Products added successfully')
-        return redirect('inventory')
+        return redirect('add_products')
 
     return render(request, 'pages/add_product.html')
 
 def stock(request):
     return render(request, 'pages/stock.html')
-
