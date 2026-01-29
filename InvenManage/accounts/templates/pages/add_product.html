@@ -53,14 +53,19 @@
         }
 
         
-        .sideNav a{
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 20px;
+              .sideNav a{
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      color: white;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
         }
+
+    .sideNav { list-style: none; padding: 0 1rem; }
 
         .sideNav{
             margin-top: 40px;
@@ -69,6 +74,11 @@
             align-items: center;
         }
 
+        .sideNav a:hover,
+        .sideNav a.active {
+            background: rgba(59, 130, 246, .15);
+            color: #fff;
+        }
 
 
         .outline{
@@ -336,9 +346,9 @@
         </div>
         
         <div class="sideNav">
-            <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="link" href="dashboard.html">Dashboard</a>
             <a class="outline" href=""><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="link" href="{% url 'stock' %}">Low Stock</a>
+            <a class="link" href="stock.html">Low Stock</a>
             <a class="link" href="">Creat Invoice</a>
             <a class="link" href="">Invoices</a>
             <a class="link" href="">Customers</a>
@@ -349,86 +359,94 @@
     <main>
         <div class="dash">
             <span>Add New Product</span>
-            <button><a class="a" href="{% url 'inventory' %}">Back</a></button>
-            {% if messsages %}
-                    {% for message in messages %}
-                    <li>{{ message }}</li>
-                    {% endfor %}
-            {% endif %}
+            <button><a class="a" href="inventory.html">Back</a></button>
         </div>
         <div class="card">
             <div class="basic">
                 <div class="top">
                     <span>Basic Information</span>
                 </div>
-                <form method="post">
-                    <div class="second">
-                        <div class="finput">
-                            <span class="span1">SKU</span>
-                            <input type="text" placeholder="e.g, POOL-001" name="SKU">
-                            <span class="span2">Unique identifier</span>
-                        </div>
-                        <div class="finput">
-                            <span class="span1">Product Name</span>
-                            <input type="text" placeholder="e.g, Chlorine Tablets" name="product_name">
-                        </div>
+
+                <div class="second">
+                    <div class="finput">
+                        <span class="span1">SKU</span>
+                        <input type="text" name="sku" placeholder="e.g, POOL-001">
+                        <span class="span2">Unique identifier</span>
                     </div>
-                    <div class="last">
-                        <div class="linput">
-                            <span class="span1">Category</span>
-                            <input class="inp1" type="text" placeholder="e.g, Chemicals" name="category">
-                        </div>
-                        <div class="linput2">
-                            <span class="span1">Description</span>
-                            <textarea class="inp2" name="note" placeholder="Detailed product info..." name="description"></textarea>
-                        </div>
+
+                    <div class="finput">
+                        <span class="span1">Product Name</span>
+                        <input type="text" name="product_name" placeholder="e.g, Chlorine Tablets">
                     </div>
-                </form>
-            </div>
-            <div class="pricing">
+                </div>
+
+                <div class="last">
+                    <div class="linput">
+                        <span class="span1">Category</span>
+                        <input class="inp1" type="text" name="category" placeholder="e.g, Chemicals">
+                    </div>
+
+                    <div class="linput2">
+                        <span class="span1">Description</span>
+                        <textarea name="description" placeholder="Detailed product info..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== PRICING ===== -->
+            <section class="pricing">
                 <div class="top">
                     <span>Pricing</span>
                 </div>
-                <form method="post">
-                    <div class="first">
-                        <div class="finput">
-                            <span class="span1">Cost Price (GHC)</span>
-                            <input type="text" placeholder="0" name="price">
-                            <span class="span2">Your cost per unit</span>
-                        </div>
-                        <div class="finput">
-                            <span class="span1">Selling Price (GHC)</span>
-                            <input type="text" placeholder="0" name="sales_price">
-                            <span class="span2">Auto-filled with 30% margin</span>
-                        </div>
+
+                <div class="first">
+                    <div class="finput">
+                        <span class="span1">Cost Price (GHC)</span>
+                        <input type="number" step="0.01" name="cost_price" placeholder="0">
+                        <span class="span2">Your cost per unit</span>
                     </div>
-                </form>
-            </div>
-            <div class="stock">
-                 <div class="top">
+
+                    <div class="finput">
+                        <span class="span1">Selling Price (GHC)</span>
+                        <input type="number" step="0.01" name="selling_price" placeholder="0">
+                        <span class="span2">Auto-filled with 30% margin  </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== STOCK MANAGEMENT ===== -->
+            <section class="stock">
+                <div class="top">
                     <span>Stock Management</span>
                 </div>
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="first">
-                        <div class="finput">
-                            <span class="span1">Initial Quantity</span>
-                            <input type="text" placeholder="0" name="initial_quantity">
-                        </div>
-                        <div class="finput">
-                            <span class="span1">Low Stock Alert</span>
-                            <input type="text" placeholder="5" name="low_stock_alert">
-                            <span class="span2">Notify when stock > this</span>
-                        </div>
+
+                <div class="first">
+                    <div class="finput">
+                        <span class="span1">Initial Quantity</span>
+                        <input type="number" name="initial_quantity" placeholder="0">
                     </div>
-             
-                </form>
-            </div>
+
+                    <div class="finput">
+                        <span class="span1">Low Stock Alert</span>
+                        <input type="number" name="low_stock_alert" placeholder="5">
+                        <span class="span2">Notify when stock ≤ this</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ACTION BUTTONS ===== -->
             <div class="extra">
-                <button class="b1"><a class="s" href="{% url 'inventory' %}">Cancel</a></button>
-                <button class="b2"><a class="s2" href="{% url 'add_product' %}">Add product</a></button>
+                <a href="{% url 'inventory' %}">
+                    <button type="button" class="b1">Cancel</button>
+                </a>
+                <button type="submit" class="b2">Add Product</button>
             </div>
-        </div>
-    </main>
+
+        </form>
+        <!-- ================= FORM END ================= -->
+
+    </div>
+</main>
+
 </body>
 </html>

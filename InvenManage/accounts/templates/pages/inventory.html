@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css">
     <style>
                 *{
             padding: 0px;
@@ -53,14 +54,19 @@
         }
 
         
-        .sideNav a{
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
-            margin-bottom: 20px;
+         .sideNav a{
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: .75rem 1rem;
+      color: white;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
         }
+
+    .sideNav { list-style: none; padding: 0 1rem; }
 
         .sideNav{
             margin-top: 40px;
@@ -68,6 +74,13 @@
             flex-direction: column;
             align-items: center;
         }
+
+        .sideNav a:hover,
+        .sideNav a.active {
+            background: rgba(59, 130, 246, .15);
+            color: #fff;
+        }
+
 
 
 
@@ -116,17 +129,7 @@
             margin-bottom: 10px;
         }
 
-        .link:hover{
-            background: rgba(255, 255, 255, 0.322);
-            border-radius: 7px;
-            width: 160px;
-            height: 40px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 2s;
-        }
+
 
         .over-view{
             display: flex;
@@ -246,6 +249,7 @@
             <a class="link" href="">Customers</a>
             <a class="link" href="">Sales Report</a>
             <a class="link" href="">Stock Report</a>
+        </div>
         </div>
     </div>
     <main>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Invoice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css">
     <style>
-                *{
+                   *{
             padding: 0px;
             margin: 0px;
             box-sizing: border-box;
@@ -20,6 +20,8 @@
             --font: #2c434d;
             --border: #acb0b0;
             --button-bg: #d8ecf6;
+            --radius-sm: 8px;
+            --transition: all .2s ease;
         }
 
 
@@ -54,7 +56,7 @@
         }
 
         
-          .sideNav a{
+        .sideNav a{
       display: flex;
       align-items: center;
       gap: .75rem;
@@ -93,6 +95,10 @@
             align-items: center;
         }
 
+        .user span{
+            color: white;
+            margin-bottom: 10px;
+        }
         main .dash{
             display: flex;
             justify-content: space-between;
@@ -112,96 +118,34 @@
         }
 
         .dash button, .a{
-            width: 150px;
+            width: 130px;
             height: 40px;
-            background: none;
-            color: gray;
-            border-radius: 7px;
+            background: #0a5ece;
+            color: white;
+            border-radius: 5px;
+            border: none;
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
         }
 
-        .dash button{
-            border: 2px solid gray;
+        .dash2 input{
+            height: 40px;
+            width: 220px;
+            border-radius: 5px;
+            border: 2px solid rgba(128, 128, 128, 0.352);
         }
 
-        .user span{
-            color: white;
-            margin-bottom: 10px;
-        }
-
-
-
-        .over-view{
-            display: flex;
-            width: 100%;
-            background: #fff;
-            margin-top: 20px;
-            flex-direction: column;
-            height: 25vh;
-            border-radius: 7px;
-        }
-
-        .over-content{
-            display: flex;
-            flex-direction: row;
-            margin-top: 10px;
-            margin-left: 40px;
-            gap: 20px;
-        }
-
-        .card{
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        .dash2 input::placeholder{
             padding: 20px;
-            background: rgba(144, 238, 144, 0.048);
-            display: flex;
-            flex-direction: column;
-            border-radius: 7px;
-            width: 555px;
-            align-items: center;
-            height: 120px;
-            justify-content: center;
         }
 
-        .over-view label{
-            margin-left: 20px;
-            font-size: 20px;
-            color: var(--font);
-            font-weight: 600;
-        }
+    .over-view { display:flex; gap:.75rem; flex-wrap:wrap; margin-bottom:1rem; width:93.5%; margin-left: 40px;}
+    .f1 { padding:.6rem 1rem; border:1.5px solid var(--border); border-radius:var(--radius-sm); background:#fff; font-size:.875rem; color:var(--text); cursor:pointer; transition:var(--transition); flex:1 1 150px; }
+    .f1:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(59,130,246,.15); }
 
-        .yellow{
-            color: yellow;
-        }
-
-        .num ,.yellow, .red{
-            font-size: 25px;
-            font-weight: 700;
-        }
-
-        .red{
-            color: red;
-        }        
-
-        .red, .yellow{
-            font-size: 40px;
-            font-weight: 800;
-        }
-
-        .let{
-            color: rgba(0, 0, 0, 0.518);
-        }
-
-        .head h2 {
-        color: #2c434d;
-        margin-bottom: 15px;
-        font-size: 1.4rem;
-        font-weight: 700;
-        }
-
-         table {
-        width: 1105px;
+    table {
+        width: 93.5%;
         margin-left: 40px;
         border-collapse: collapse;
         border-radius: 7px;
@@ -225,29 +169,6 @@
         font-size: 13px;
         letter-spacing: 0.4px;
         }
-
-
-        .head{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-left: 40px;
-            width: 1105px;
-            padding: 10px;
-        }
-
-        .head input{
-            width: 200px;
-            height: 30px;
-        }
-
-        .head input::placeholder{
-            padding: 20px;
-        }
-
-        .table{
-            margin-top: 80px;
-        }
     </style>
 </head>
 <body>
@@ -255,12 +176,13 @@
         <div class="user">
            <span>Asare</span>
         </div>
+        
         <div class="sideNav">
-            <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
-            <a class="link" href="{% url 'inventory' %}"><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="outline" href="{% url 'stock' %}">Low Stock</a>
-            <a class="link" href="">Creat Invoice</a>
-            <a class="link" href="">Invoices</a>
+            <a class="link" href="dashboard.html"><i class="fas fa-chart-bar "></i>Dashboard</a>
+            <a class="link" href="inventory.html"><i class="fas fa-shelves"></i>Inventory</a>
+            <a class="link" href="stock.html"><i class="fa fa-car"></i>Low Stock</a>
+            <a class="link" href="create_invoice.html">Creat Invoice</a>
+            <a class="active" href="invoice.html"><i class="fas fa-receipt"></i>Invoices</a>
             <a class="link" href="">Customers</a>
             <a class="link" href="">Sales Report</a>
             <a class="link" href="">Stock Report</a>
@@ -268,26 +190,29 @@
     </div>
     <main>
         <div class="dash">
-            <span>Low Stock Alert</span>
-            <button><a class="a" href="{% url 'inventory' %}">Back to Inventory</a></button>
+            <span>Invoice</span>
+            <div class="dash2">
+                <input type="search" placeholder="Search">
+                <button><a class="a" href="create_invoice.html">Add Invoice</a></button>
+            </div>    
         </div>
         <div class="over-view">
-            <div class="over-content">
-                <div class="card">
-                    <span class="let">Low Stock Items</span>
-                    <span class="yellow">0</span>
-                </div>
-                <div class="card">
-                    <span class="let">Out of stock</span>
-                    <span class="red">0</span>
-                </div>
-            </div>
+           <select class="f1">
+                <option value="">All Status</option>
+                <option value="Draft">Draft</option>
+                <option value="Sent">Sent</option>
+                <option value="Paid">Paid</option>
+                <option value="Partial">Partial</option>
+                <option value="Overdue">Overdue</option>
+           </select>
+           <select class="f1">
+            <option value="">All Time</option>
+            <option value="Last 7 Days">Last 7 Days</option>
+            <option value="Last 30 Days">Last 30 Days</option>
+            <option value="Last 90 Days">Last 90 Days</option>
+           </select>
         </div>
         <div class="table">
-            <div class="head">
-                <h2>Products Needing Restock</h2>
-                <input type="search" placeholder="Search">
-            </div>
             <table>
                 <tr>
                 <th class="cr">PRODUCT</th>
@@ -315,5 +240,6 @@
                 </tr>
             </table>
         </div>
+    </main>
 </body>
 </html>
