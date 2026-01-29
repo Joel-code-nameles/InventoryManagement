@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
                    *{
             padding: 0px;
@@ -40,7 +40,7 @@
         .nav{
             display: flex;
             flex-direction: column;
-            background: linear-gradient(45deg, #0a5ece , #042d70);
+            background: #111827;
             height: 100vh;
             width: 15%;
             position: fixed;
@@ -74,7 +74,6 @@
             margin-top: 40px;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
         .sideNav a:hover,
@@ -120,13 +119,20 @@
         .dash button, .a{
             width: 130px;
             height: 40px;
-            background: #0a5ece;
+            background: #111827;
             color: white;
             border-radius: 5px;
             border: none;
             font-weight: 600;
             font-size: 14px;
             text-decoration: none;
+        }
+
+        .a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .45rem;
         }
 
         .dash2 input{
@@ -161,7 +167,7 @@
         }
 
         th {
-        background: #0a5ece;
+        background: #111827;
         
         color: white;
         font-weight: 600;
@@ -178,14 +184,12 @@
         </div>
         
         <div class="sideNav">
-            <a class="link" href="dashboard.html"><i class="fas fa-chart-bar "></i>Dashboard</a>
-            <a class="link" href="inventory.html"><i class="fas fa-shelves"></i>Inventory</a>
-            <a class="link" href="stock.html"><i class="fa fa-car"></i>Low Stock</a>
-            <a class="link" href="create_invoice.html">Creat Invoice</a>
+            <a class="link" href="dashboard.html"><i class="fa-solid fa-chart-bar" style="color: #ffffff;"></i>Dashboard</a>
+            <a class="link" href="inventory.html"><i class="fa-solid fa-warehouse" style="color: #ffffff;"></i>Inventory</a>
+            <a class="link" href="stock.html"><i class="fa-solid fa-arrow-trend-down" style="color: #ffffff;"></i>Low Stock</a>
             <a class="active" href="invoice.html"><i class="fas fa-receipt"></i>Invoices</a>
-            <a class="link" href="">Customers</a>
-            <a class="link" href="">Sales Report</a>
-            <a class="link" href="">Stock Report</a>
+            <a class="link" href=""><i class="fa-solid fa-user" style="color: #ffffff;"></i>Customers</a>
+            <a class="link" href=""><i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>Report</a>
         </div>
     </div>
     <main>
@@ -193,7 +197,7 @@
             <span>Invoice</span>
             <div class="dash2">
                 <input type="search" placeholder="Search">
-                <button><a class="a" href="create_invoice.html">Add Invoice</a></button>
+                <button><a class="a" href="create_invoice.html"><i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>Add Invoice</a></button>
             </div>    
         </div>
         <div class="over-view">
