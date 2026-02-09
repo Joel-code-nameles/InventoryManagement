@@ -192,9 +192,6 @@
             border: 1px solid grey;
         }
 
-        .finput input::placeholder{
-            padding: 20px;
-        }
 
         .span1{
             margin-bottom: 10px;
@@ -223,9 +220,7 @@
             border: 1px solid gray;
         }
 
-        .inp1::placeholder{
-            padding: 20px;
-        }
+
 
         .linput2{
             margin-top: 20px;
@@ -236,9 +231,6 @@
             border-radius: 7px;
         }
 
-        .linput2 textarea::placeholder{
-            padding: 20px;
-        }
 
         .pricing{
             margin-top: 40px;
@@ -325,6 +317,11 @@
             display: flex;
             gap: 10px;
             margin-left: 74.5%;
+        }
+
+        input, textarea{
+            padding: 20px;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -443,7 +440,12 @@
                 </a>
                 <button type="submit" class="b2">Add Product</button>
             </div>
-
+            {% if messages %}
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+   
         </form>
         <!-- ================= FORM END ================= -->
 
