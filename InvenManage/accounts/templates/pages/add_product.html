@@ -52,20 +52,15 @@
             margin-top: 5%;
         }
 
-        
-              .sideNav a{
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-      padding: .75rem 1rem;
-      color: white;
-      border-radius: var(--radius-sm);
-      font-weight: 500;
-      transition: var(--transition);
-      text-decoration: none;
+       
+        .sideNav a{
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
-
-    .sideNav { list-style: none; padding: 0 1rem; }
 
         .sideNav{
             margin-top: 40px;
@@ -74,11 +69,6 @@
             align-items: center;
         }
 
-        .sideNav a:hover,
-        .sideNav a.active {
-            background: rgba(59, 130, 246, .15);
-            color: #fff;
-        }
 
 
         .outline{
@@ -149,7 +139,7 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-            
+           
             border-radius: 7px;
         }
 
@@ -193,7 +183,7 @@
         .finput{
             display: flex;
             flex-direction: column;
-            
+           
         }
 
         .finput input{
@@ -340,29 +330,44 @@
     </style>
 </head>
 <body>
-     <div class="nav">
-        <div class="user">
-           <span>Asare</span>
-        </div>
-        
-        <div class="sideNav">
-            <a class="link" href="dashboard.html">Dashboard</a>
-            <a class="outline" href=""><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="link" href="stock.html">Low Stock</a>
-            <a class="link" href="">Creat Invoice</a>
-            <a class="link" href="">Invoices</a>
-            <a class="link" href="">Customers</a>
-            <a class="link" href="">Sales Report</a>
-            <a class="link" href="">Stock Report</a>
-        </div>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="nav">
+    <div class="user">
+        <span>Asare</span>
     </div>
-    <main>
-        <div class="dash">
-            <span>Add New Product</span>
-            <button><a class="a" href="inventory.html">Back</a></button>
-        </div>
-        <div class="card">
-            <div class="basic">
+
+    <div class="sideNav">
+        <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
+        <a class="outline" href="{% url 'inventory' %}">Inventory</a>
+        <a class="link" href="#">Low Stock</a>
+        <a class="link" href="#">Create Invoice</a>
+        <a class="link" href="#">Invoices</a>
+        <a class="link" href="#">Customers</a>
+        <a class="link" href="#">Sales Report</a>
+        <a class="link" href="#">Stock Report</a>
+    </div>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main>
+
+    <!-- Header -->
+    <div class="dash">
+        <span>Add New Product</span>
+        <a class="a" href="{% url 'inventory' %}">
+            <button type="button">Back</button>
+        </a>
+    </div>
+
+    <div class="card">
+
+        <!-- ================= FORM START ================= -->
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- ===== BASIC INFORMATION ===== -->
+            <section class="basic">
                 <div class="top">
                     <span>Basic Information</span>
                 </div>
@@ -370,7 +375,7 @@
                 <div class="second">
                     <div class="finput">
                         <span class="span1">SKU</span>
-                        <input type="text" name="sku" placeholder="e.g, POOL-001">
+                        <input type="text" name="SKU" placeholder="e.g, POOL-001">
                         <span class="span2">Unique identifier</span>
                     </div>
 
@@ -402,13 +407,13 @@
                 <div class="first">
                     <div class="finput">
                         <span class="span1">Cost Price (GHC)</span>
-                        <input type="number" step="0.01" name="cost_price" placeholder="0">
+                        <input type="number" step="0.01" name="price" placeholder="0">
                         <span class="span2">Your cost per unit</span>
                     </div>
 
                     <div class="finput">
                         <span class="span1">Selling Price (GHC)</span>
-                        <input type="number" step="0.01" name="selling_price" placeholder="0">
+                        <input type="number" step="0.01" name="sales_price" placeholder="0">
                         <span class="span2">Auto-filled with 30% margin  </span>
                     </div>
                 </div>
@@ -441,6 +446,12 @@
                 </a>
                 <button type="submit" class="b2">Add Product</button>
             </div>
+            {% if messages %}
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            {% endif %}
+
 
         </form>
         <!-- ================= FORM END ================= -->

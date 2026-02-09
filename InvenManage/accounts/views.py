@@ -96,6 +96,8 @@ def add_product(request):
         if SKU == '':
             messages.error(request, 'All fields required')
 
+        
+
         product_acc = Product.objects.create(
             SKU = SKU,
             product_name = product_name,
@@ -108,9 +110,13 @@ def add_product(request):
         )
         product_acc.save()
         messages.success(request, 'Products added successfully')
-        return redirect('add_products')
+        return redirect('inventory')
 
     return render(request, 'pages/add_product.html')
 
 def stock(request):
     return render(request, 'pages/stock.html')
+
+def product_list(request):
+    inventory_items = Product.objects.all()
+    return render(request, 'pages/inventory')

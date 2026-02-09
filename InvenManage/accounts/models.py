@@ -12,9 +12,10 @@ class Registration(models.Model):
 
 class Product(models.Model):
     # Add Product Page
+    user = models.ForeignKey(Registration, on_delete=models.CASCADE, null=True)
     SKU = models.CharField(max_length=255, unique=True, null= True)
     product_name = models.CharField(max_length=255,null= True)
-    catergory = models.CharField(max_length=255, null=True)
+    category = models.CharField(max_length=255, null=True)
     description = models.TextField(max_length=1200,null=True)
     price = models.CharField(max_length=255, null=True)
     sales_price = models.CharField(max_length=255,null= True)
@@ -22,4 +23,4 @@ class Product(models.Model):
     low_stock_alert = models.CharField(max_length=255, null=True)
 
     def __str__(self):
-        return self.SKU
+        return self.description

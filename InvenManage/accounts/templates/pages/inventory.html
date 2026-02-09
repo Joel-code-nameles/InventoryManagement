@@ -284,29 +284,23 @@
             </div>
             <table>
                 <tr>
-                <th class="cr">PRODUCT</th>
-                <th>SKU</th>
-                <th>CATEGORY</th>
-                <th>STOCK</th>
-                <th>COST</th>
-                <th>SELL</th>
-                <th>STATUS</th>
-                <th class="cr2">ACTION</th>
+                    <th class="cr">PRODUCT</th>
+                    <th>SKU</th>
+                    <th>CATEGORY</th>
+                    <th>STOCK</th>
+                    <th>COST</th>
+                    <th>SALE PRICE</th>
                 </tr>
-
+                {% for product in products %}
                 <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.SKU }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.initial_quantity }}</td>  
+                    <td>{{ product.price }}</td>              
+                    <td>{{ product.sales_price }}</td> 
                 </tr>
-                <tr>
-
-                </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
