@@ -94,7 +94,12 @@
                 <input type="password" placeholder="Password" name="pass">
                 <input type="text" placeholder="Confirm Password" name="confirm_pass">
                 <button type="submit">Submit</button>
-                <p>Already have an account? <a href="login.html">Sign in</a></p>
+                <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+                {% if messages %}
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
             </form>
         </div>
     </div>

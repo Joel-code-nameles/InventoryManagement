@@ -97,7 +97,12 @@
                 <input type="text" placeholder="Email" name="email">
                 <input type="password" placeholder="Password" name="pass">
                 <button class="dash" type="submit">Submit</button>
-                <p>Don't have an account? <a class="reg" href="register.html">Sign up</a></p>
+                <p>Don't have an account? <a class="reg" href="{% url 'register' %}">Sign up</a></p>
+                {% if messages %}
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                {% endif %}
             </form>
         </div>
     </div>
