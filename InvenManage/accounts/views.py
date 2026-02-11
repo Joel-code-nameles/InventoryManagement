@@ -1,122 +1,165 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Registration
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import Product
-from django.contrib.auth import login
-from django.contrib.auth.hashers import make_password, check_password
 
-# Create your views here.
+# =========================
+# REGISTER VIEW
+# =========================
 def Register(request):
     if request.method == "POST":
-        userEmail = request.POST['email']
-        username = request.POST['username']
-        password = request.POST['password']
-        conf_password = request.POST['conf_password']
+        username = request.POST.get('username', '').strip()
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '').strip()
+        conf_password = request.POST.get('conf_password', '').strip()
 
-        if username == '':
-            messages.error(request, 'All fields required')
+        # Validate required fields
+        if not username or not email or not password or not conf_password:
+            messages.error(request, "All fields are required")
             return redirect('register')
 
-        if userEmail == '':
-           messages.error(request, 'All fields required')
-           return redirect('register')
-
-        if password == '':
-            messages.error(request, 'All fiels required')
-            return redirect('register')
-
+        # Check password match
         if password != conf_password:
-            messages.error(request,"Passwords do not match.")
+            messages.error(request, "Passwords do not match")
             return redirect('register')
 
-        if Registration.objects.filter(username = username).exists():
-            messages.error(request, "Username is already in existence")
+        # Check if username exists
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists")
             return redirect('register')
-        
-        hashed_password = make_password(password)
 
-        userAccount = Registration.objects.create(
-            userEmail = userEmail,
-            username = username,
-            password = hashed_password,
+        # Check if email exists
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists")
+            return redirect('register')
+
+        # Create the user (use create_user to hash the password)
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
         )
-        userAccount.save()
-        messages.success(request, "Account successfully created")
-        return redirect('dashboard')
+
+        messages.success(request, "Account created successfully. Please login.")
+        return redirect('login')
 
     return render(request, "pages/register.html")
 
 
+# =========================
+# LOGIN VIEW - FIXED
+# =========================
 def Login(request):
-    if request.method == 'POST':
-        userEmail = request.POST.get('userEmail')
-        password = request.POST.get('password')
+    if request.method == "POST":
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '').strip()
 
-        try:
-            user = Registration.objects.get(userEmail__iexact=userEmail)
+        # Validate required fields
+        if not username or not password:
+            messages.error(request, "Both fields are required")
+            return redirect('login')
 
-            if userEmail == '':
-                messages.error(request, 'All fields required')
-                return redirect('login')
-            
-            if password == '':
-                messages.error(request, 'All fields required')
-                return redirect('login')
+        # Authenticate the user using the built-in User model
+        user = authenticate(request, username=username, password=password)
 
-            if check_password(password, user.password):
-                user.backend = 'django.contrib.auth.backends.ModelBackend'
-                messages.success(request, f"Welcome {user.username}")
-                return redirect('dashboard')
-
-        except Registration.DoesNotExist:
-            pass
-
-        messages.error(request, "Wrong Email or Password")
-        return redirect('login')
+        if user is not None:
+            login(request, user)
+            messages.success(request, f"Welcome {user.username}")
+            return redirect('dashboard')
+        else:
+            messages.error(request, "Invalid username or password")
+            return redirect('login')
 
     return render(request, "pages/login.html")
 
+
+# =========================
+# LOGOUT VIEW
+# =========================
+@login_required
+def Logout(request):
+    logout(request)
+    messages.success(request, "Logged out successfully")
+    return redirect('login')
+
+
+# =========================
+# DASHBOARD VIEW
+# =========================
+@login_required
 def dashboard(request):
     return render(request, 'pages/dashboard.html')
 
-def inventory(request):
-    return render(request, 'pages/inventory.html')
 
+# =========================
+# INVENTORY PAGE
+# =========================
+@login_required
+def inventory(request):
+    products = Product.objects.all()
+    return render(request, 'pages/inventory.html', {
+        'products': products
+    })
+
+
+# =========================
+# ADD PRODUCT VIEW
+# =========================
+@login_required
 def add_product(request):
     if request.method == 'POST':
-        SKU = request.POST.get('SKU')
-        product_name = request.POST.get('product_name')
-        category = request.POST.get('category')
-        description = request.POST.get('description')
-        price = request.POST.get('price')
-        sales_price = request.POST.get('sales_price')
-        initial_quantity = request.POST.get('initial_quantity')
-        low_stock_alert = request.POST.get('low_stock_alert')
+        SKU = request.POST.get('SKU', '').strip()
+        product_name = request.POST.get('product_name', '').strip()
+        category = request.POST.get('category', '').strip()
+        description = request.POST.get('description', '').strip()
+        price = request.POST.get('price', '').strip()
+        sales_price = request.POST.get('sales_price', '').strip()
+        initial_quantity = request.POST.get('initial_quantity', '').strip()
+        low_stock_alert = request.POST.get('low_stock_alert', '').strip()
 
-        if SKU == '':
-            messages.error(request, 'All fields required')
+        # Validate required fields
+        if not SKU or not product_name or not price or not initial_quantity:
+            messages.error(request, "All required fields must be filled")
+            return redirect('add_product')
 
-        
-
-        product_acc = Product.objects.create(
-            SKU = SKU,
-            product_name = product_name,
-            category = category,
-            description = description,
-            price = price,
-            sales_price = sales_price,
-            initial_quantity = initial_quantity,
-            low_stock_alert = low_stock_alert,
+        # Create the product
+        Product.objects.create(
+            SKU=SKU,
+            product_name=product_name,
+            category=category,
+            description=description,
+            price=price,
+            sales_price=sales_price,
+            initial_quantity=initial_quantity,
+            low_stock_alert=low_stock_alert,
+            user=request.user
         )
-        product_acc.save()
-        messages.success(request, 'Products added successfully')
+
+        messages.success(request, "Product added successfully")
         return redirect('inventory')
 
     return render(request, 'pages/add_product.html')
 
-def stock(request):
-    return render(request, 'pages/stock.html')
 
+# =========================
+# STOCK PAGE
+# =========================
+@login_required
+def stock(request):
+    products = Product.objects.all()
+    return render(request, 'pages/stock.html', {
+        'products': products
+    })
+
+
+# =========================
+# PRODUCT LIST VIEW
+# =========================
+@login_required
 def product_list(request):
-    inventory_items = Product.objects.all()
-    return render(request, 'pages/inventory')
+    products = Product.objects.all()
+    return render(request, 'pages/product_list.html', {
+        'products': products
+    })

@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import *
+from .models import Product
 
-# Register your models here.
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('SKU', 'product_name', 'category', 'price', 'initial_quantity')
+    search_fields = ('product_name', 'SKU', 'category')
+    list_filter = ('category',)
 
-admin.site.register(Registration)
-admin.site.register(Product)
+# Register the Product model with custom admin options
+admin.site.register(Product, ProductAdmin)

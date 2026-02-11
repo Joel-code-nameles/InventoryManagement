@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -95,7 +95,7 @@
         <div class="card-info">
             <form method="post">
                 {% csrf_token %}
-                <input type="text" placeholder="Email" name="userEmail">
+                <input type="text" placeholder="Username" name="username">
                 <input type="password" placeholder="Password" name="password">
                 <button class="dash" type="submit">Submit</button>
                  {% if messages %}
