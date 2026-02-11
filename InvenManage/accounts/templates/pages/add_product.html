@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
                 *{
             padding: 0px;
@@ -37,7 +38,7 @@
         .nav{
             display: flex;
             flex-direction: column;
-            background: linear-gradient(45deg, #0a5ece , #042d70);
+            background: #111827;
             height: 100vh;
             width: 15%;
             padding: 20px;
@@ -66,7 +67,6 @@
             margin-top: 40px;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
 
@@ -93,7 +93,7 @@
         }
 
         .dash span{
-        color: #0a5ece;
+        color: #111827;
         margin-bottom: 15px;
         font-size: 1.8rem;
         font-weight: 700;
@@ -119,17 +119,6 @@
             margin-bottom: 10px;
         }
 
-        .link:hover{
-            background: rgba(255, 255, 255, 0.322);
-            border-radius: 7px;
-            width: 160px;
-            height: 40px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 2s;
-        }
 
         .card{
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -151,7 +140,7 @@
             border-radius: 7px;
             padding: 30px;
             margin-left: 5%;
-            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .basic::before{
@@ -161,13 +150,13 @@
             left: 0;
             width: 6px;
             height: 100%;
-            background: #0a5ece;
+            background: #111827;
             border-top-left-radius: 6px;
             border-bottom-left-radius: 6px;
         }
 
         .top span{
-            color: #0a5ece;
+            color: #111827;
             margin-bottom: 15px;
             font-size: 1.8rem;
             font-weight: 700;
@@ -193,9 +182,6 @@
             border: 1px solid grey;
         }
 
-        .finput input::placeholder{
-            padding: 20px;
-        }
 
         .span1{
             margin-bottom: 10px;
@@ -224,9 +210,7 @@
             border: 1px solid gray;
         }
 
-        .inp1::placeholder{
-            padding: 20px;
-        }
+
 
         .linput2{
             margin-top: 20px;
@@ -237,9 +221,6 @@
             border-radius: 7px;
         }
 
-        .linput2 textarea::placeholder{
-            padding: 20px;
-        }
 
         .pricing{
             margin-top: 40px;
@@ -249,7 +230,7 @@
             margin-left: 5%;
             border-radius: 7px;
             padding: 30px;
-            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+            box-shadow:0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .pricing::before{
@@ -259,7 +240,7 @@
             left: 0;
             width: 6px;
             height: 100%;
-            background: #0a5ece;
+            background: #111827;
             border-top-left-radius: 6px;
             border-bottom-left-radius: 6px;
         }
@@ -279,7 +260,7 @@
             height: 32vh;
             border-radius: 7px;
             padding: 30px;
-            box-shadow: 0px 0px 8px 0px #0a5fce7a;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .stock::before{
@@ -289,7 +270,7 @@
             left: 0;
             width: 6px;
             height: 100%;
-            background: #0a5ece;
+            background: #111827;
             border-top-left-radius: 6px;
             border-bottom-left-radius: 6px;
         }
@@ -312,7 +293,7 @@
         .b2, .s2{
             width: 130px;
             height: 40px;
-            background: #0a5ece;
+            background: #111827;
             color: white;
             border-radius: 7px;
             border: none;
@@ -327,6 +308,11 @@
             gap: 10px;
             margin-left: 74.5%;
         }
+
+        input, textarea{
+            padding: 20px;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -338,14 +324,12 @@
     </div>
 
     <div class="sideNav">
-        <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
-        <a class="outline" href="{% url 'inventory' %}">Inventory</a>
-        <a class="link" href="#">Low Stock</a>
-        <a class="link" href="#">Create Invoice</a>
-        <a class="link" href="#">Invoices</a>
-        <a class="link" href="#">Customers</a>
-        <a class="link" href="#">Sales Report</a>
-        <a class="link" href="#">Stock Report</a>
+        <a class="link" href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-bar" style="color: #ffffff;"></i>Dashboard</a>
+        <a class="active" href="{% url 'inventory' %}"><i class="fa-solid fa-warehouse" style="color: #ffffff;"></i>Inventory</a>
+        <a class="link" href="{% url 'stock' %}"><i class="fa-solid fa-arrow-trend-down" style="color: #ffffff;"></i>Low Stock</a>
+        <a class="link" href="{% url 'invoices' %}"><i class="fas fa-receipt"></i>Invoices</a>
+        <a class="link" href=""><i class="fa-solid fa-user" style="color: #ffffff;"></i>Customers</a>
+       <a class="link" href=""><i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>Report</a>
     </div>
 </div>
 

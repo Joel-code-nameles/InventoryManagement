@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/fontawesome.min.css">
+    <title>Stock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
                 *{
             padding: 0px;
@@ -38,7 +38,7 @@
         .nav{
             display: flex;
             flex-direction: column;
-            background: linear-gradient(45deg, #0a5ece , #042d70);
+            background: #111827;
             height: 100vh;
             width: 15%;
             position: fixed;
@@ -72,7 +72,6 @@
             margin-top: 40px;
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
         .sideNav a:hover,
@@ -217,7 +216,7 @@
         }
 
         th {
-        background: #0a5ece;
+        background: #111827;
         
         color: white;
         font-weight: 600;
@@ -256,14 +255,12 @@
            <span>Asare</span>
         </div>
         <div class="sideNav">
-            <a class="link" href="{% url 'dashboard' %}">Dashboard</a>
-            <a class="link" href="{% url 'inventory' %}"><i class="fa-solid fa-shelves" style="color: #d6e3ec;"></i>Inventory</a>
-            <a class="outline" href="{% url 'stock' %}">Low Stock</a>
-            <a class="link" href="">Creat Invoice</a>
-            <a class="link" href="">Invoices</a>
-            <a class="link" href="">Customers</a>
-            <a class="link" href="">Sales Report</a>
-            <a class="link" href="">Stock Report</a>
+            <a class="link" href="{% url 'dashboard' %}"><i class="fa-solid fa-chart-bar" style="color: #ffffff;"></i>Dashboard</a>
+            <a class="link" href="{% url 'inventory' %}"><i class="fa-solid fa-warehouse" style="color: #ffffff;"></i>Inventory</a>
+            <a class="active" href="{% url 'stock' %}"><i class="fa-solid fa-arrow-trend-down" style="color: #ffffff;"></i>Low Stock</a>
+            <a class="link" href="{% url 'invoices' %}"><i class="fas fa-receipt"></i>Invoices</a>
+            <a class="link" href=""><i class="fa-solid fa-user" style="color: #ffffff;"></i>Customers</a>
+            <a class="link" href=""><i class="fa-solid fa-chart-line" style="color: #ffffff;"></i>Report</a>
         </div>
     </div>
     <main>
