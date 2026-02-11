@@ -153,6 +153,15 @@ def stock(request):
         'products': products
     })
 
+@login_required
+def invoices(request):
+    products = Product.objects.all()
+    return render(request, 'pages/invoice.html')
+
+@login_required
+def create_invoices(request):
+    products = Product.objects.all()
+    return render(request, 'pages/create_invoice.html')
 
 
 # =========================
